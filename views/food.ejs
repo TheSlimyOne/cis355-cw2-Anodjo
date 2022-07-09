@@ -1,0 +1,48 @@
+<!-------------------------------------------
+    File: food.json
+    Author: Jordan Anodjo (jjanodjo@svsu.edu) 
+-------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Latest minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+</head>
+
+<body style="background-color: #f5f5dc; position: fixed; width: 100%; height: 100%;">
+    <% const price = locals.price %>
+    <% let dollarSigns%> 
+    <% if (price <= 10){ %>
+    <% dollarSigns = "$" %>
+    <% } else if (price < 10 && price > 20) { %>
+    <% dollarSigns = "$$" %>
+    <% } else { %>
+    <% dollarSigns = "$$$" %>
+    <% } %>
+    
+    <div class="container" style="display:flex; justify-content:center; height:100%">
+        <div class="card" style="width: 18rem; margin: auto;">
+            <img src= "<%=strMealThumb%>" class="card-img-top" alt="pasta">
+            <div class="card-body">
+                <h5 class="card-title"><%=`${locals.strMeal} ${dollarSigns}`%></h5>
+
+                <% instructions = strInstructions.split(".") %>
+                <ol>
+                    <% instructions.forEach(instruction => { %>
+                        <li><%=`${instruction.trim()}`%></li>
+                    <% }); %> 
+                    
+                </ol>
+
+            <button type="button" class="btn btn-warning col-12"><%=`Add to Cart ($${price})`%></button>
+    
+            </div>        
+        </div>
+    </div>
+
+</body>
+
+</html>
